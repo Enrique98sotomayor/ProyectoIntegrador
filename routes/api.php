@@ -1,8 +1,8 @@
 <?php
-
-use App\Http\Controllers\RegistroAsistenciaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\RegistroAsistenciaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('asistencia', RegistroAsistenciaController::class);
+Route::apiResource('curso', CursoController::class);

@@ -17,9 +17,15 @@ class LoginController extends Controller
         ]);
 
         if(!auth()->attempt($request->only('email','password'))){
-            return back()->with('mensaje','Credenciales incorrectas');
+            return to_route('dashboard');
         }
 
         return redirect()->route('dashboard');
+    }
+    public function indexdocente(){
+        return view('auth.login2');
+    }
+    public function indexsecretaria(){
+        return view('auth.login3');
     }
 }

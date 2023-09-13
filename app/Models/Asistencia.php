@@ -13,10 +13,14 @@ class Asistencia extends Model
         'nombres',
         'apellidos',
         'codAlumno',
-        'idCurso',
+        'curso_id',
         'fecha',
-        'nombreCurso',
         'coordX',
-        'coordY'
+        'coordY',
+        'valor'
     ];
+
+    public function curso(){
+        return $this->belongsTo(Curso::class);
+    }
 }

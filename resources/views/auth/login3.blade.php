@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo')
-    login Decano
+    login Secretaria
 @endsection
 
 @section('contenido')

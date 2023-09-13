@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('codAlumno')->unique;
-            $table->foreignId('idCurso')->unique;
+            $table->foreignId('curso_id')->constrained();
             $table->date('fecha');
         });
     }

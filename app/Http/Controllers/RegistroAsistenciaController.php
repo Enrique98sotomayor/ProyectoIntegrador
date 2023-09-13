@@ -20,11 +20,11 @@ class RegistroAsistenciaController extends Controller
             'nombres' => $validator['nombres'],
             'apellidos' => $validator['apellidos'],
             'codAlumno' => $validator['codAlumno'],
-            'idCurso' => $validator['idCurso'],
+            'curso_id' => $validator['curso_id'],
             'fecha' => $validator['fecha'],
-            'nombreCurso' => $validator['nombreCurso'],
             'coordX' => $validator['coordX'],
-            'coordY' => $validator['coordY']
+            'coordY' => $validator['coordY'],
+            'valor' => $validator['valor']
         ]);
         $asistencia->save();
         return response()->json($asistencia);

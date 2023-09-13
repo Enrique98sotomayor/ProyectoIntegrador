@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AsistenciaPostRequest extends FormRequest
+class CursoPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,7 @@ class AsistenciaPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombres' =>'required',
-            'apellidos' => 'required',
-            'codAlumno' =>'required',
-            'curso_id'   =>'required',
-            'fecha' =>'date',
-            'coordX' => ['required','string'],
-            'coordY'=> ['required','string'],
-            'valor'=>['required'],
+            'nombreCurso' =>'required'
         ];
     }
 }

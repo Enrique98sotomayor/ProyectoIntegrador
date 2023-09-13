@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('asistencias', function (Blueprint $table) {
-            $table->string('coordX');
-            $table->string('coordY');
+        Schema::create('alumnos', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -22,10 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('asistencias', function (Blueprint $table) {
-            $table->string('nombreCurso');
-            $table->string('coordX');
-            $table->string('coordY');
-        });
+        Schema::dropIfExists('alumnos');
     }
 };
