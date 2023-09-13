@@ -13,7 +13,7 @@
             <a
             href="{{route('dashboard.pdf')}}"
             class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" target="_blank"
->REPORTE PDF</a>
+        >REPORTE PDF</a>
         </div>
         <!-- Table -->
         <div class="flex flex-col mt-6">
