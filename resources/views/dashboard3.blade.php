@@ -1,99 +1,54 @@
 
-@extends('layouts.app')
-
-@section('titulo')
-    Reporte de Asistencia
-@endsection
-
-@section('contenido')
-<div class="flex h-screen ">
-
-    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 ml-10 w-full">
-        <div class="flex justify-end">
-            <a
-href="{{route('dashboard.pdf3')}}"
-class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" target="_blank"
->REPORTE PDF</a>
-        </div>
-        <!-- Table -->
-        <div class="flex flex-col mt-6">
-          <div class="overflow-x-auto rounded-lg">
-            <div class="inline-block min-w-full align-middle">
-              <div class="overflow-hidden shadow sm:rounded-lg">
-
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                  <thead class="bg-gray-50 dark:bg-gray-700">
-                    <tr>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Nombres
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Apellidos
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Código Alumno
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Código Curso
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Nombre Curso
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        Fecha
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        CoordX
-                      </th>
-                      <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                        CoordY
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody class="bg-white dark:bg-gray-800">
-
-                    @foreach ( $asistencia as $dato )
-
-                    <tr class="bg-gray-50 dark:bg-gray-700">
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->nombres}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                        {{$dato->apellidos}}
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->codAlumno}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->idCurso}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->nombreCurso}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->fecha}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->coordX}}</span>
-                      </td>
-                      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="font-semibold">{{$dato->coordY}}</span>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro de Asistencia FIEI - @yield('titulo')</title>
+    @vite('resources/css/app.css')
+</head>
+<body class="bg-gray-100">
+    <header class="p-5 border-b bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex gap-3 items-center">
+                <img src="{{asset('img/logo.jpeg')}}" alt="Imagen Logo" class="w-12 h-12">
+                <a class="text-3xl font-black" href="{{route('principal')}}">
+                    Registro de Asistencia - FIEI
+                </a>
             </div>
-          </div>
+
+            @auth
+            <nav class="flex gap-2 items-center">
+                <a class="font-bold  text-gray-600 text-sm" href="#">Hola: <span class="font-normal">{{auth()->user()->name}}</span></a>
+                <a class="font-bold  text-gray-600 text-sm" href="#">Rol: <span class="font-normal">{{auth()->user()->role}}</span></a>
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit" class="font-bold  text-gray-600 text-sm" href="{{route('logout')}}">
+                        Cerrar Sesión</button>
+                    </nav>
+                </form>
+            @endauth
+
+            @guest
+            <nav class="flex gap-2 items-center">
+                <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('login')}}">Login</a>
+
+            </nav>
+            @endguest
+
         </div>
+    </header>
 
-      </div>
+    <main class="container mx-auto mt-10">
+        <h2 class="font-black text-center text-3xl mb-10">
+            @yield('titulo')
+        </h2>
+        @yield('contenido')
+    </main>
 
-</div>
-<!-- ------------------------------------------------------------------------------------------ -->
-
-
-
-
-@endsection
+    <footer class="text-center p-5 text-gray-500 font-bold mt-10">
+        Registro de Asistencia FIEI - Todos los derechos reservados {{ now()->year}}
+    </footer>
+</body>
+</html>

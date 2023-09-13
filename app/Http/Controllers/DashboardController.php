@@ -31,16 +31,19 @@ class DashboardController extends Controller
     }
     public function pdf(){
         $asistencia= Asistencia::all();
+        $cursos=Curso::all();
         $pdf = Pdf::loadView('dashboardpdf', compact('asistencia','cursos'));
         return $pdf->stream();
     }
     public function pdf2(){
         $asistencia= Asistencia::all();
+        $cursos=Curso::all();
         $pdf = Pdf::loadView('dashboardpdf2', compact('asistencia','cursos'));
         return $pdf->stream();
     }
     public function pdf3(){
         $asistencia= Asistencia::all();
+        $cursos=Curso::all();
         $pdf = Pdf::loadView('dashboardpdf3', compact('asistencia','cursos'));
         return $pdf->stream();
     }

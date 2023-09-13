@@ -8,7 +8,7 @@
 @section('contenido')
 <div class="flex h-screen ">
 
-    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 ml-10">
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 ml-10 w-full">
         <div class="flex justify-between">
             <form class="flex items-center" action="">
                 <select name="curso_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <!-- Table -->
-        <div class="flex flex-col mt-6">
+        <div class="flex flex-col mt-6 w-full">
           <div class="overflow-x-auto rounded-lg">
             <div class="inline-block min-w-full align-middle">
               <div class="overflow-hidden shadow sm:rounded-lg">
